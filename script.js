@@ -2,10 +2,28 @@
 const text=document.getElementById("text");
 const delayedtimer=document.getElementById("delay");
 const button=document.getElementById("btn");
+const outputDiv=document.getElementById("output");
 
 
-button.addEventListener("onclick", click());
+button.addEventListener("click", displayMsg);
 
-function click(){
-	console.log("inside a");
+// function click(){
+// 	console.log(delayedtimer.value, typeof delayedtimer.value);
+// }
+
+async function displayMsg(){
+	const message=text.value;
+	const delay=parseInt(delayedtimer.value);
+
+	const promVal=new Promise(resolve=>{
+		resolve(message)
+	},delay);
+
+	
+	promVal.then((message) => {
+		outputDiv.innerText=message;
+    }).catch((error) => {
+        console.log(error); // Print the error message
+    });
+	
 }
