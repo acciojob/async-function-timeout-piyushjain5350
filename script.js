@@ -16,14 +16,16 @@ async function displayMsg(){
 	const delay=parseInt(delayedtimer.value);
 
 	const promVal=new Promise(resolve=>{
-		resolve(message)
-	},delay);
+    setTimeout(()=>{
+		resolve(message);
+	},delay) 
+	});
 
 	
 	promVal.then((message) => {
 		outputDiv.innerText=message;
     }).catch((error) => {
-        console.log(error); // Print the error message
-    });
+  console.log(error); // Print the error message
+});
 	
 }
